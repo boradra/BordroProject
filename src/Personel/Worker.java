@@ -106,8 +106,11 @@ public class Worker implements Calisan {
     }
 
     @Override
-    public String toCSVRow() {
-        return String.join(";", id, isim, soyisim,
+    public String toString() {
+        return String.join(";",
+                id,
+                isim,
+                soyisim,
                 String.valueOf(avans),
                 String.format("%.2f", sskPrim),
                 String.format("%.2f", gelirVergisi),

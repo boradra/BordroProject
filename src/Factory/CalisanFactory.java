@@ -24,7 +24,7 @@ public class CalisanFactory {
         this.bebekAylık = bebekAylık;
 
     }
-    public static Calisan createCalisan(String id, String ad, String soyad, int brutMaas, Cinsiyet cinsiyet, int avans, boolean hamile, Cinsiyet cocukCinsiyeti, int bebekAylık, String unvan) {
+    public static Calisan createCalisan(String id, String ad, String soyad, int brutMaas, Cinsiyet cinsiyet, int avans, boolean hamile, Cinsiyet cocukCinsiyeti, int cocukAylık, String unvan) {
         Calisan calisan = null;
         switch (unvan.toUpperCase())
         {
@@ -36,7 +36,7 @@ public class CalisanFactory {
                         .avans(avans)
                         .hamilelikDurumu(hamile)
                         .cocukCinsiyeti(cocukCinsiyeti)
-                        .bebekAylık(bebekAylık)
+                        .bebekAylık(cocukAylık)
                         .build();
                 break;
             case "SERVANT":
@@ -47,7 +47,7 @@ public class CalisanFactory {
                         .avans(avans)
                         .hamilelikDurumu(hamile)
                         .cocukCinsiyeti(cocukCinsiyeti)
-                        .bebekAylık(bebekAylık)
+                        .bebekAylık(cocukAylık)
                         .build();
                 break;
             case "MANAGER":
@@ -58,7 +58,7 @@ public class CalisanFactory {
                         .avans(avans)
                         .hamilelikDurumu(hamile)
                         .cocukCinsiyeti(cocukCinsiyeti)
-                        .bebekAylık(bebekAylık)
+                        .bebekAylık(cocukAylık)
                         .build();
                 break;
             default:
