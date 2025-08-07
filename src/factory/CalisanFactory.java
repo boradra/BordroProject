@@ -1,5 +1,5 @@
-package Factory;
-import Personel.*;
+package factory;
+import model.*;
 
 public class CalisanFactory {
     private String id;

@@ -1,14 +1,7 @@
-import Personel.*;
-import Services.CsvReader;
-import Services.CsvWriter;
-import Services.Repo;
+import model.*;
+import services.RaporExporter;
+import repository.Repo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class main {
@@ -16,17 +9,17 @@ public class main {
         List<Calisan> calisanlar = Repo.getAll();
         for(Calisan calisan : calisanlar)
         {
-            calisan.MaasUygula();
+            calisan.maasUygula();
         }
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("C:\\\\Bordro_csv\\\\maas_bilgileri.csv"))) {
-            bw.write("ID;AD;SOYAD;AVANS;SSK_Primi;Gelir_Vergisi;Net_Maas");
-            bw.newLine();
-            for (Calisan c : calisanlar) {
-                bw.write(c.toString());               // DOSYAYA YAZ
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        RaporExporter.exportRapor(calisanlar);
+
+       /* Calisan arananCalisan = Repo.getById("b79bffc4-21a4-4986-9602-0b59a4f7ce9c");
+        List<Calisan> tekCalisanListesi = new ArrayList<>();
+        tekCalisanListesi.add(arananCalisan);
+        for(Calisan tekCalisan : tekCalisanListesi){
+            tekCalisan.MaasUygula();
         }
+        RaporExporter.exportRapor(tekCalisanListesi);
+        */
     }
 }

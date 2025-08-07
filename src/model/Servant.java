@@ -1,4 +1,4 @@
-package Personel;
+package model;
 
 public class Servant implements Calisan {
     private String id;
@@ -66,42 +66,27 @@ public class Servant implements Calisan {
         this.bebekAylık = builder.bebekAylık;
     }
 
-    public double MaasUygula() {
+    public double maasUygula() {
         sskPrim = sskHesapla();
-        int ekstra = cinsiyetBonusHesapla() + hamilelikBonusuHesapla();
-        double vergiMatrahı = brutMaas - sskPrim + ekstra - avans;
+        double vergiMatrahı = brutMaas - sskPrim;
         gelirVergisi = gelirVergisiHesapla(vergiMatrahı);
-        netMaas = vergiMatrahı - gelirVergisi;
+        netMaas = vergiMatrahı - gelirVergisi - avans;
         return netMaas;
     }
 
 
     private double sskHesapla() {
-        double oran = getSskOrani();
+        double oran = 0.15;
         return brutMaas * oran;
     }
 
     private double gelirVergisiHesapla(double vergiMatrahı) {
         double oran = 0.20;
-        if (cinsiyet == Cinsiyet.KADIN) {
-            oran -= 0.05;
-        }
         return vergiMatrahı * oran;
     }
 
-    private int cinsiyetBonusHesapla() {
-        return cinsiyet == Cinsiyet.KADIN ? 100 : 0;
-    }
-
-    private int hamilelikBonusuHesapla() {
-        return hamilelikDurumu ? 300 : 0;
-    }
-
     public double getSskOrani() {
-        double oran = 0.15;
-        if (cinsiyet == Cinsiyet.KADIN && hamilelikDurumu && bebekAylık > 3 && cocukCinsiyet == Cinsiyet.KIZ) {
-            oran = 0.13;
-        }
+        double oran = 0.20;
         return oran;
     }
 
@@ -118,5 +103,8 @@ public class Servant implements Calisan {
                 String.format("%.2f", netMaas)
         );
     }
-
+    public String getId()
+    {
+        return id;
+    }
 }
