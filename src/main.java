@@ -12,7 +12,7 @@ public class main {
             calisan.maasUygula();
         }
         RaporExporter.exportRapor(calisanlar);
-
+        /* Deneme */
        /* Calisan arananCalisan = Repo.getById("b79bffc4-21a4-4986-9602-0b59a4f7ce9c");
         List<Calisan> tekCalisanListesi = new ArrayList<>();
         tekCalisanListesi.add(arananCalisan);
