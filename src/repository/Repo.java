@@ -15,7 +15,8 @@ public class Repo {
 
     public static List<Calisan> getAll()
     {
-            try (BufferedReader br = Files.newBufferedReader(Paths.get("C:\\\\Bordro_csv\\\\kullanicilar_unvan.csv"))) {
+            // Sabit yol yerine sadece dosya adını kullanın
+try (BufferedReader br = Files.newBufferedReader(Paths.get("kullanicilar_unvan.csv"))) {
                 String line = br.readLine(); // başlık geç
                 while ((line = br.readLine()) != null) {
                     String[] cols = line.split(";", -1);
